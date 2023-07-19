@@ -9,8 +9,11 @@ public class TeleportTo : MonoBehaviour
     public InputHelpers.Button inputHelpers = InputHelpers.Button.MenuButton;
     public XRNode controller = XRNode.LeftHand;
     public GameObject XROrigin;
+    public GameObject XROriginCtrl;
     public Vector3 targetPosition;
     public Quaternion targetRotation;
+    public Vector3 targetcPosition;
+    public Quaternion targetcRotation;
     // Update is called once per frame
     void Update()
     {
@@ -18,8 +21,10 @@ public class TeleportTo : MonoBehaviour
 
         if (isPressed)
         {
-            XROrigin.gameObject.transform.position = targetPosition;
-            XROrigin.gameObject.transform.rotation = targetRotation;
+            XROrigin.gameObject.transform.localPosition = targetPosition;
+            XROrigin.gameObject.transform.localRotation = targetRotation;
+            XROriginCtrl.gameObject.transform.position = targetcPosition;
+            XROriginCtrl.gameObject.transform.rotation = targetcRotation;
         }
     }
 }
