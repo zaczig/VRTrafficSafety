@@ -15,6 +15,7 @@ public class TeleportTo : MonoBehaviour
     public Quaternion targetRotation;
     public Vector3 targetcPosition;
     public Quaternion targetcRotation;
+    public int count = 0;
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +27,12 @@ public class TeleportTo : MonoBehaviour
             XROrigin.gameObject.transform.localRotation = targetRotation;
             XROriginCtrl.gameObject.transform.position = targetcPosition;
             XROriginCtrl.gameObject.transform.rotation = targetcRotation;
-            btnManager.GetComponent<ButtonManager>().begin();
+
+            if(count == 0)
+            {
+                btnManager.GetComponent<ButtonManager>().begin();
+                count++;
+            }
         }
     }
 }
