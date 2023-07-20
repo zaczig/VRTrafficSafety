@@ -10,6 +10,7 @@ public class TeleportTo : MonoBehaviour
     public XRNode controller = XRNode.LeftHand;
     public GameObject XROrigin;
     public GameObject XROriginCtrl;
+    public GameObject btnManager;
     public Vector3 targetPosition;
     public Quaternion targetRotation;
     public Vector3 targetcPosition;
@@ -25,6 +26,7 @@ public class TeleportTo : MonoBehaviour
             XROrigin.gameObject.transform.localRotation = targetRotation;
             XROriginCtrl.gameObject.transform.position = targetcPosition;
             XROriginCtrl.gameObject.transform.rotation = targetcRotation;
+            btnManager.GetComponent<ButtonManager>().begin();
         }
     }
 }
