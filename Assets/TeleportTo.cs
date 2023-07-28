@@ -28,11 +28,11 @@ public class TeleportTo : MonoBehaviour
             XROriginCtrl.gameObject.transform.position = targetcPosition;
             XROriginCtrl.gameObject.transform.rotation = targetcRotation;
 
-            if(count == 0)
+/*            if(count == 0)
             {
                 btnManager.GetComponent<ButtonManager>().begin();
                 count++;
-            }
+            }*/
         }
     }
 }

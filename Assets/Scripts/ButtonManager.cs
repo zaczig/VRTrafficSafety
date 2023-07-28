@@ -74,7 +74,7 @@ public class ButtonManager : MonoBehaviour
 		anim = GetComponent<Animator>();
 	}
     // Start is called before the first frame update
-    public void begin()
+    void Start()
     {
         welcomeElements.SetActive(true);
         finalElements.SetActive(false);
