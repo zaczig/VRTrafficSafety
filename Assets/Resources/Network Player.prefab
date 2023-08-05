@@ -108,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44a603f2d38d50e40b7120b5b6ee5c3d, type: 2}
+  - {fileID: 2100000, guid: d196c4d7e95ddc942bc525e11772b0fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -292,7 +292,10 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 5776231172187098550}
+  - {fileID: 7201098321369452091}
+  - {fileID: 3966928281044146859}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -311,6 +314,8 @@ MonoBehaviour:
   head: {fileID: 4360399129703181730}
   leftHand: {fileID: 4995953548976595486}
   rightHand: {fileID: 5964604832767286371}
+  leftHandAnimator: {fileID: 7323269438003126797}
+  rightHandAnimator: {fileID: 8366178486542537757}
 --- !u!1001 &4247905923766849113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -369,12 +374,17 @@ PrefabInstance:
     - target: {fileID: 5686134208196863108, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 44a603f2d38d50e40b7120b5b6ee5c3d, type: 2}
+      objectReference: {fileID: 2100000, guid: d196c4d7e95ddc942bc525e11772b0fb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!4 &8366178486535388107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
+  m_PrefabInstance: {fileID: 4247905923766849113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8366178486542537757 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5686134208192617028, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
   m_PrefabInstance: {fileID: 4247905923766849113}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7216368109525211558
@@ -387,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 109434732392105323, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 44a603f2d38d50e40b7120b5b6ee5c3d, type: 2}
+      objectReference: {fileID: 2100000, guid: d196c4d7e95ddc942bc525e11772b0fb, type: 2}
     - target: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
       propertyPath: m_Name
       value: Left Hand Model
@@ -441,5 +451,10 @@ PrefabInstance:
 --- !u!4 &7323269437995371995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
+  m_PrefabInstance: {fileID: 7216368109525211558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7323269438003126797 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 109434732388006827, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
   m_PrefabInstance: {fileID: 7216368109525211558}
   m_PrefabAsset: {fileID: 0}
