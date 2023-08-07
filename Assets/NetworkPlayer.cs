@@ -26,9 +26,9 @@ public class NetworkPlayer : MonoBehaviour
     {
         photonView = GetComponent<PhotonView>();
         XROrigin rig = FindObjectOfType<XROrigin>();
-        headRig = rig.transform.Find("Camera Offset/Main Camera");
-        leftHandRig = rig.transform.Find("Camera Offset/Left Hand");
-        rightHandRig = rig.transform.Find("Camera Offset/Right Hand");
+        headRig = rig.transform.Find("CameraOffset/Main Camera");
+        leftHandRig = rig.transform.Find("CameraOffset/LeftHand (Smooth locomotion)");
+        rightHandRig = rig.transform.Find("CameraOffset/RightHand (Teleport Locomotion)");
         if (photonView.IsMine)
         {
             foreach (var item in GetComponentsInChildren<Renderer>())
@@ -50,8 +50,8 @@ public class NetworkPlayer : MonoBehaviour
             MapPosition(leftHand, leftHandRig);
             MapPosition(rightHand, rightHandRig);
 
-            UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand), leftHandAnimator);
-            UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.RightHand), rightHandAnimator);
+            //UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.LeftHand), leftHandAnimator);
+            //UpdateHandAnimation(InputDevices.GetDeviceAtXRNode(XRNode.RightHand), rightHandAnimator);
         }
 
     }
