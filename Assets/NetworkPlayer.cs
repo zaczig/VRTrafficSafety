@@ -21,6 +21,7 @@ public class NetworkPlayer : MonoBehaviour
     private Transform leftHandRig;
     private Transform rightHandRig;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,14 +78,15 @@ public class NetworkPlayer : MonoBehaviour
         }
     }
 
+
     void MapPosition(Transform target, Transform rigTransform)
     {
-        Vector3 currentPosition = target.position;
+        if (photonView.IsMine)
+        {
+            // For the local player, simply set the target's position and rotation to match the rigTransform.
+            target.position = rigTransform.position;
+            target.rotation = rigTransform.rotation;
+        }
 
-        currentPosition = rigTransform.position;
-        //currentPosition.y = 0.5f;
-        target.rotation = rigTransform.rotation;
-
-        target.position = currentPosition;
     }
 }
