@@ -83,7 +83,10 @@ public class ButtonManager : MonoBehaviour
 		Q1re.SetActive(false);
 		//startHalo();
 		//myMovementController.bikeMovement = 0f;
+
+		//this causes delay in connecting to server
 		Time.timeScale = 0f;
+
 		//anim.SetBool("HelmetFloat", false);
 		//helmet = hel.GetComponent<Animation>();
 

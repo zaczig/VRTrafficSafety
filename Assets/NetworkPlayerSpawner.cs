@@ -19,7 +19,7 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
         base.OnLeftRoom();
         PhotonNetwork.Destroy(spawnedPlayerPrefab);
     }
-    public void DeactivatePlayer()
+/*    public void DeactivatePlayer()
     {
         PhotonView player1 = PhotonView.Find(1001);
         PhotonView player2 = PhotonView.Find(2001);
@@ -37,6 +37,6 @@ public class NetworkPlayerSpawner : MonoBehaviourPunCallbacks
             p1hands[i].enabled = false;
             p2hands[i].enabled = false;
         }
-    }
+    }*/
 
 }
