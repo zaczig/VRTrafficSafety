@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Quiz3 : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Quiz3 : MonoBehaviour
 	public AudioClip wrong;
 	bool A1C, A2C, A3C, A4C, A5C = false;
 	bool first_time = true;
+    private XRBaseInteractor interactor;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -32,10 +34,12 @@ public class Quiz3 : MonoBehaviour
 
 		GameObject TestManager = GameObject.Find("TestController");
 		myTestManager = TestManager.GetComponent<TestControllerManager>();
-	}
+        interactor = GetComponent<XRBaseInteractor>();
 
-	// Update is called once per frame
-	void Update()
+    }
+
+    // Update is called once per frame
+    void Update()
 	{
 		/*if (A1C && A2C && A3C && A4C && A5C)
 		{
@@ -46,27 +50,27 @@ public class Quiz3 : MonoBehaviour
 
 	public void dragA1()
 	{
-		A1.transform.position = Input.mousePosition;
+		A1.transform.position = interactor.transform.position;
 	}
 
 	public void dragA2()
 	{
-		A2.transform.position = Input.mousePosition;
-	}
+		A2.transform.position = interactor.transform.position;
+    }
 
 	public void dragA3()
 	{
-		A3.transform.position = Input.mousePosition;
+		A3.transform.position = interactor.transform.position;
 	}
 
 	public void dragA4()
 	{
-		A4.transform.position = Input.mousePosition;
+		A4.transform.position = interactor.transform.position;
 	}
 
 	public void dragA5()
 	{
-		A5.transform.position = Input.mousePosition;
+		A5.transform.position = interactor.transform.position;
 	}
 
 	
