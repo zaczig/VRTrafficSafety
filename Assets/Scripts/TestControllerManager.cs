@@ -13,6 +13,7 @@ public class TestControllerManager : MonoBehaviour
     private IntersectionCarMovement myIntersectionController;
     private UITaskController myUIController;
     private List<List<GameObject>> Tests;
+    public GameObject centerRay;
 
     private int outerTestID;
     private int innerTestID;
@@ -137,7 +138,9 @@ public class TestControllerManager : MonoBehaviour
 
     void runTest()
     {
+
         testTimeTaken++;
+        centerRay.SetActive(true);
 
         /*if(testTimeTaken >= targetHelpTime)
         {
