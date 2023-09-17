@@ -50,27 +50,27 @@ public class Quiz3 : MonoBehaviour
 
 	public void dragA1()
 	{
-		A1.transform.position = interactor.transform.position;
+		A1.transform.position = Input.mousePosition;
 	}
 
 	public void dragA2()
 	{
-		A2.transform.position = interactor.transform.position;
+		A2.transform.position = Input.mousePosition;
     }
 
 	public void dragA3()
 	{
-		A3.transform.position = interactor.transform.position;
+		A3.transform.position = Input.mousePosition;
 	}
 
 	public void dragA4()
 	{
-		A4.transform.position = interactor.transform.position;
+		A4.transform.position = Input.mousePosition;
 	}
 
 	public void dragA5()
 	{
-		A5.transform.position = interactor.transform.position;
+		A5.transform.position = Input.mousePosition;
 	}
 
 	
