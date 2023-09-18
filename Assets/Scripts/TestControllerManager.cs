@@ -35,6 +35,10 @@ public class TestControllerManager : MonoBehaviour
     [SerializeField] private Transform Ring1Pos;
     [SerializeField] private Transform Ring2Pos;
     [SerializeField] private Transform Ring3Pos;
+    public GameObject Ring1Obj;
+    public GameObject Ring2Obj;
+    public GameObject Ring3Obj;
+
     /*[SerializeField] private Transform Ring4Pos;
     [SerializeField] private Transform Ring5Pos;*/
 
@@ -207,11 +211,7 @@ public class TestControllerManager : MonoBehaviour
 
                 //if (mousePosX < anillo4.x + offset * 2 && mousePosX > anillo4.x - offset * 2 && mousePosY < anillo4.y + offset * 2 && mousePosY > anillo4.y - offset * 2)
 
-                if ((mousePosX < ring1.x + offset * 2 && mousePosX > ring1.x - offset * 2 && mousePosY < ring1.y + offset * 2 && mousePosY > ring1.y - offset * 2) ||
-                (mousePosX < ring2.x + offset * 2 && mousePosX > ring2.x - offset * 2 && mousePosY < ring2.y + offset * 2 && mousePosY > ring2.y - offset * 2) ||
-                (mousePosX < ring3.x + offset * 2 && mousePosX > ring3.x - offset * 2 && mousePosY < ring3.y + offset * 2 && mousePosY > ring3.y - offset * 2) /*||
-                (mousePosX < ring4.x + offset * 2 && mousePosX > ring4.x - offset * 2 && mousePosY < ring4.y + offset * 2 && mousePosY > ring4.y - offset * 2) ||
-                (mousePosX < ring5.x + offset * 2 && mousePosX > ring5.x - offset * 2 && mousePosY < ring5.y + offset * 2 && mousePosY > ring5.y - offset * 2)*/)
+                if ((!Ring1Obj.activeInHierarchy || !Ring2Obj.activeInHierarchy || !Ring3Obj.activeInHierarchy))
                 {
                     timeTaken++;
 
@@ -315,6 +315,7 @@ public class TestControllerManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         firstTest = false;
         runTest();
+
     }
 
     IEnumerator resumeCarMovement()
