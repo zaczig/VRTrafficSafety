@@ -77,8 +77,8 @@ public class Quiz3 : MonoBehaviour
 
 	public void dropA1()
 	{
-		float Distance = Vector3.Distance(A1.transform.position, B1.transform.position);
-		if (Distance < 20)
+		float Distance = Vector2.Distance(A1.transform.position, B1.transform.position);
+		if (Distance < 75)
 		{
 			A1.transform.position = B1.transform.position;
 			source.clip = correct;
@@ -94,8 +94,8 @@ public class Quiz3 : MonoBehaviour
 	}
 	public void dropA2()
 	{
-		float Distance = Vector3.Distance(A2.transform.position, B2.transform.position);
-		if (Distance < 20)
+		float Distance = Vector2.Distance(A2.transform.position, B2.transform.position);
+        if (Distance < 75)
 		{
 			A2.transform.position = B2.transform.position;
 			source.clip = correct;
