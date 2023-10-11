@@ -3,13 +3,18 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class DragAndMatch : MonoBehaviour
 {
+
     public GameObject A1, A2, A3, A4, A5;
     public GameObject B1, B2, B3, B4, B5;
-    public GameObject Quiz;
+    public GameObject Q3;
+    public GameObject Q3re;
+    private TestControllerManager myTestManager;
+
+
     public AudioClip correct;
     public AudioClip wrong;
-    private AudioSource source;
-    private Vector3 Pos1l, Pos2l, Pos3l, Pos4l, Pos5l;  // Store the initial position of A1.
+    public AudioSource source;
+    Vector2 Pos1l, Pos2l, Pos3l, Pos4l, Pos5l;  // Store the initial position of A1.
 
     bool A1C, A2C, A3C, A4C, A5C = false;
 
@@ -22,6 +27,11 @@ public class DragAndMatch : MonoBehaviour
         Pos3l = A3.transform.localPosition;  // Store the initial position of A1.
         Pos4l = A4.transform.localPosition;  // Store the initial position of A1.
         Pos5l = A5.transform.localPosition;  // Store the initial position of A1.
+
+        GameObject TestManager = GameObject.Find("TestController");
+        myTestManager = TestManager.GetComponent<TestControllerManager>();
+
+        source.Play();
     }
 
 
@@ -44,7 +54,7 @@ public class DragAndMatch : MonoBehaviour
             A1.transform.localPosition = Pos1l;
             source.clip = wrong;
             source.Play();
-            A1C = false;
+           // A1C = false;
 
         }
     }
@@ -66,7 +76,7 @@ public class DragAndMatch : MonoBehaviour
             A2.transform.localPosition = Pos2l;
             source.clip = wrong;
             source.Play();
-            A2C = false;
+            //A2C = false;
         }
     }
     public void SnaptoAns3()
@@ -87,7 +97,7 @@ public class DragAndMatch : MonoBehaviour
             A3.transform.localPosition = Pos3l;
             source.clip = wrong;
             source.Play();
-            A3C = false;
+            //A3C = false;
         }
     }
     public void SnaptoAns4()
@@ -108,7 +118,7 @@ public class DragAndMatch : MonoBehaviour
             A4.transform.localPosition = Pos4l;
             source.clip = wrong;
             source.Play();
-            A4C = false;
+            //A4C = false;
         }
     }
 
@@ -130,7 +140,7 @@ public class DragAndMatch : MonoBehaviour
             A5.transform.localPosition = Pos5l;
             source.clip = wrong;
             source.Play();
-            A5C = false;
+            //A5C = false;
         }
     }
 
@@ -138,7 +148,7 @@ public class DragAndMatch : MonoBehaviour
     {
         if (A1C && A2C && A3C && A4C && A5C)
         {
-            Quiz.SetActive(false);
+            Q3.SetActive(false);
         }
     }
 
