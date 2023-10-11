@@ -9,6 +9,7 @@ public class DrivewayCarMovementController : MonoBehaviour
     private int currentTargetPos;
     private bool carTravelDone = false;
     public bool startCarMovement = false;
+    public GameObject playing;
 
     private List<Transform> WayPoints;
 
@@ -27,8 +28,15 @@ public class DrivewayCarMovementController : MonoBehaviour
         if (!carTravelDone && startCarMovement)
         {
             //rotationRoutine();
+            if(playing.activeInHierarchy)
+            {
+                carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
+            }
+            else
+            {
+                carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * 0);
 
-            carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
+            }
             updateTargetPosition();
         }
     }

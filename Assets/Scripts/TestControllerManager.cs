@@ -38,6 +38,7 @@ public class TestControllerManager : MonoBehaviour
     public GameObject Ring1Obj;
     public GameObject Ring2Obj;
     public GameObject Ring3Obj;
+    public GameObject playing;
 
     /*[SerializeField] private Transform Ring4Pos;
     [SerializeField] private Transform Ring5Pos;*/
@@ -285,26 +286,35 @@ public class TestControllerManager : MonoBehaviour
     {
         if (showReinforcement == 1 && first_time3)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            playing.SetActive(false);
             Q3re.SetActive(true);
             first_time3 = false;
             showReinforcement = 0;
+            centerRay.SetActive(false);
         }
 
         else if (showReinforcement == 1 && first_time6)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            playing.SetActive(false);
             Q6re.SetActive(true);
             first_time6 = false;
             showReinforcement = 0;
+            centerRay.SetActive(false);
+
         }
 
         else if (showReinforcement == 1 && first_time7)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
+            playing.SetActive(false);
+
             Q7re.SetActive(true);
             first_time7 = false;
             showReinforcement = 0;
+            centerRay.SetActive(false);
+
         }
     }
 

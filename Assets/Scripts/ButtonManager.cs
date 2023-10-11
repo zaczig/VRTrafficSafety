@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
 	public AudioClip correct;
 	public AudioClip wrong;
 	public AudioSource source;
+	public GameObject playing;
 
     [SerializeField]
     private GameObject welcomeElements;
@@ -85,7 +86,8 @@ public class ButtonManager : MonoBehaviour
 		//myMovementController.bikeMovement = 0f;
 
 		//this causes delay in connecting to server
-		Time.timeScale = 0f;
+		//Time.timeScale = 0f;
+		playing.SetActive(false);
 
 		//anim.SetBool("HelmetFloat", false);
 		//helmet = hel.GetComponent<Animation>();
@@ -121,7 +123,8 @@ public class ButtonManager : MonoBehaviour
         {
             finalElements.SetActive(true);
 			//myUIController.hideObjectives();
-			Time.timeScale = 0f;
+			//Time.timeScale = 0f;
+			playing.SetActive(false);
 			//myMovementController.bikeMovement = 0f;
         }
 
@@ -132,7 +135,8 @@ public class ButtonManager : MonoBehaviour
     {
 		Debug.Log("Here2");
 		welcomeElements.SetActive(false);
-		Time.timeScale = 1f;
+		//Time.timeScale = 1f;
+		playing.SetActive(true);
 		myMovementController.bikeMovement = 1f;
 		if (first_time)
 		{
@@ -211,7 +215,8 @@ public class ButtonManager : MonoBehaviour
 		{
 			
 			Q1.SetActive(false);
-			Time.timeScale = 1f;
+			//Time.timeScale = 1f;
+			playing.SetActive(true);
 			myMovementController.bikeMovement = 0f;
 			HelmetWayPoints.startMovement = true;
 			LightWayPoints.startMovement = true;
@@ -224,7 +229,7 @@ public class ButtonManager : MonoBehaviour
 
 			//anim.Play("HelmetFloat");
 
-
+			//ALREADY COMMENTED
 			//Invoke(nameof(timeContinue), 2.0f);
 			//Time.timeScale = 0f;
 			//Q1re.SetActive(true);
@@ -252,10 +257,11 @@ public class ButtonManager : MonoBehaviour
 		if (option7_1.isOn && option7_2.isOn && option7_3.isOn)
 		{
 			Q7.SetActive(false);
-			Time.timeScale = 1f;
+			//Time.timeScale = 1f;
+			playing.SetActive(true);
 			source.clip = correct;
 			source.Play();
-			Invoke(nameof(timeContinue), 2.0f);
+			//Invoke(nameof(timeContinue), 2.0f);
 
 			//Q7re.SetActive(true);
 		}
@@ -358,13 +364,15 @@ public class ButtonManager : MonoBehaviour
 
 	public void timeContinue()
 	{
-		Time.timeScale = 1f;
+		//Time.timeScale = 1f;
+		playing.SetActive(true);
 		//currentTargetPos++;
 	}
 
 	private void showQ1re()
     {
-		Time.timeScale = 0f;
+		//Time.timeScale = 0f;
+		playing.SetActive(false);
 		HelmetWayPoints.deactivateObject();
 		LightWayPoints.deactivateObject();
 		BellWayPoints.deactivateObject();

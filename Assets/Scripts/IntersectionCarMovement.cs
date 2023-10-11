@@ -10,6 +10,7 @@ public class IntersectionCarMovement : MonoBehaviour
     private int currentTargetPos;
     private bool carTravelDone = false;
     public bool startCarMovement = false;
+    public GameObject playing;
 
     public Transform[] wheels;
     private List<Transform> WayPoints;
@@ -33,8 +34,14 @@ public class IntersectionCarMovement : MonoBehaviour
         if(!carTravelDone && startCarMovement)
         {
             rotationRoutine();
-
-            carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
+            if(playing.activeInHierarchy)
+            {
+                carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
+            }
+            else
+            {
+                carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * 0);
+            }
             updateTargetPosition();
         }
     }
@@ -61,8 +68,15 @@ public class IntersectionCarMovement : MonoBehaviour
 
 
         Quaternion lookRotation = Quaternion.LookRotation(directionFromMeToTarget);
+        if(playing.activeInHierarchy)
+        {
+            carTransform.rotation = Quaternion.Lerp(carTransform.rotation, lookRotation, Time.deltaTime * degresPerSecond);
+        }
+        else
+        {
+            carTransform.position = Vector3.MoveTowards(carTransform.position, WayPoints[currentTargetPos].position, movementSpeed * 0);
 
-        carTransform.rotation = Quaternion.Lerp(carTransform.rotation, lookRotation, Time.deltaTime * degresPerSecond);
+        }
     }
 
     void updateTargetPosition()

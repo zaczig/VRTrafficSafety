@@ -20,6 +20,8 @@ public class CarMovementController : MonoBehaviour
 
     private GameObject movementController;
 
+    public GameObject playing;
+
     private const int slowMovementID = 0;
     private const int stopMovementID = 1;
 
@@ -41,11 +43,11 @@ public class CarMovementController : MonoBehaviour
     void Update()
     {
 
-        if (forwardDirection && Time.timeScale > 0f && mySpeedController.currentMovementSpeed > 0f)
+        if (forwardDirection && playing.activeInHierarchy && mySpeedController.currentMovementSpeed > 0f)
         {
             carTransform.position = carTransform.position - new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
-        else if(!forwardDirection && Time.timeScale > 0f && mySpeedController.currentMovementSpeed > 0f)
+        else if(!forwardDirection && playing.activeInHierarchy && mySpeedController.currentMovementSpeed > 0f)
         {
             carTransform.position = carTransform.position + new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }

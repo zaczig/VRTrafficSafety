@@ -18,6 +18,8 @@ public class CarSpeedController : MonoBehaviour
     public int crossCounter = 0;
     public bool slowingDown = false;
 
+    public GameObject playing;
+
     private float previousSpeed;
 
     public Transform[] wheels;
@@ -32,7 +34,7 @@ public class CarSpeedController : MonoBehaviour
     void Update()
     {
         //Debug.Log(currentMovementSpeed);
-        if (Time.timeScale > 0f && currentMovementSpeed > stopMovementSpeed)
+        if (playing.activeInHierarchy && currentMovementSpeed > stopMovementSpeed)
         {
             rotateWheel();
         }
@@ -67,7 +69,14 @@ public class CarSpeedController : MonoBehaviour
         wheelSpeed = currentMovementSpeed * 20;
         foreach(Transform hubcap in wheels)
         {
-            hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime);
+            if (playing.activeInHierarchy)
+            {
+                hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime);
+            }
+            else
+            {
+                hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * 0);
+            }
         }
 
     }

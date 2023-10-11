@@ -37,6 +37,7 @@ public class MovementControllerScript : MonoBehaviour
     private bool experienceDone = false;
     private int degresPerSecond = 2;
     public float bikeMovement = 1.0f;
+    public GameObject playing;
 
     private BlinkWarningController myWarningController;
 
@@ -104,52 +105,25 @@ public class MovementControllerScript : MonoBehaviour
         {
             rotationRoutine();
 
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime * bikeMovement);
-            
+            if (playing.activeInHierarchy)
+            {
+                playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime * bikeMovement);
+            }
+            else
+            {
+                playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * 0 * bikeMovement);
+
+            }
+
             updateWheelRotate();
 
             updateTargetPosition();
         }  
     }
 
-    /*void updateTurning()
-    {
-        
-        if(playerTransform.position == WayPoints[0].position)
-        {
-			//playerTransform.rotation = WayPoints[currentTargetPos].rotation;
-			playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
-			buttonManager.Quiz1();
-            if (playerTransform.rotation != WayPoints[1].rotation)
-            {
-				playerTransform.Rotate(TurnSpeed * Time.deltaTime);
-				
-			}
-            else
-            {
-				playerTransform.Translate(rotateSpeed * 0.1f * Time.deltaTime, 0f, 0f);
-			}
-
-            
-            buttonManager.Quiz1();
-		}
-		
-        else if (playerTransform.position == WayPoints[0].position)
-        {
-			
-		}
-
-		else
-		{
-			playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
-		}
-       
-	}*/
 
     private void rotationRoutine()
     {
-        //playerTransform.LookAt(WayPoints[currentTargetPos].position);
-        //playerTransform.LookAt(WayPoints[currentTargetPos].position);
         Vector3 directionFromMeToTarget = (playerTransform.position - WayPoints[currentTargetPos].position);
 
         directionFromMeToTarget.z = -1.0f * (directionFromMeToTarget.z);
@@ -166,21 +140,34 @@ public class MovementControllerScript : MonoBehaviour
 
         Quaternion lookRotation = Quaternion.LookRotation(directionFromMeToTarget);
 
-        playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, lookRotation, Time.deltaTime * degresPerSecond);
+        if (playing.activeInHierarchy)
+        {
+            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, lookRotation, Time.deltaTime * degresPerSecond);
+
+        }
+        else
+        {
+            playerTransform.rotation = Quaternion.Lerp(playerTransform.rotation, lookRotation, 0 * degresPerSecond);
+
+        }
     }
 
     void updateWheelRotate()
     {
 		if (playerTransform.position != WayPoints[currentTargetPos].position)
 		{
-			wheel1.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
-			wheel2.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
-            //chain.SetActive(true);
+            if (playing.activeInHierarchy)
+            {
+                wheel1.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
+                wheel2.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
+            }
+            else
+            {
+                wheel1.Rotate(360 * rotateSpeed * 0 * bikeMovement, 0, 0);
+                wheel2.Rotate(360 * rotateSpeed * 0 * bikeMovement, 0, 0);
+            }
+			
 		}
-        else
-        {
-            //chain.SetActive(false);
-        }
         
 	}
     void updateTargetPosition()
@@ -189,7 +176,8 @@ public class MovementControllerScript : MonoBehaviour
         {
 			if (playerTransform.position == WayPoints[2].position)
 			{
-				Time.timeScale = 0f;
+				//Time.timeScale = 0f;
+                playing.SetActive(false);
 				quiz2.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 			}
@@ -197,23 +185,27 @@ public class MovementControllerScript : MonoBehaviour
 			else if (playerTransform.position == WayPoints[6].position )
             {
                 bikeMovement = 0.0f;
-                Time.timeScale = 0f;
-				quiz3.SetActive(true);
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+                quiz3.SetActive(true);
                 Invoke(nameof(timeContinue), 2.0f);
 
             }
 
             else if (playerTransform.position == WayPoints[8].position)
 			{
-				Time.timeScale = 0f;
-				quiz4.SetActive(true);
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+                quiz4.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
 
             else if (playerTransform.position == WayPoints[10].position)
             {
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+
                 qre4.SetActive(true);
                 Invoke(nameof(timeContinue), 2.0f);
 
@@ -221,8 +213,10 @@ public class MovementControllerScript : MonoBehaviour
 
             else if (playerTransform.position == WayPoints[13].position)
 			{
-				Time.timeScale = 0f;
-				quiz5.SetActive(true);
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+
+                quiz5.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 
@@ -232,45 +226,33 @@ public class MovementControllerScript : MonoBehaviour
                 bikeMovement = 0.0f;
                 mySpeedController1.slowingDown = true;
                 mySpeedController2.slowingDown = true;
-                Time.timeScale = 0f;
-				quiz6.SetActive(true);
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+
+                quiz6.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
             else if (playerTransform.position == WayPoints[20].position)
 			{
                 bikeMovement = 0.0f;
-                Time.timeScale = 0f;
-				quiz7.SetActive(true);
+                //Time.timeScale = 0f;
+                playing.SetActive(false);
+
+                quiz7.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 
 			}
 			currentTargetPos++;
-            /*if (fulfilledTest)
-            {
-                if (currentTargetPos < WayPoints.Count - 1)
-                {
-                    currentTargetPos++;
-                    fulfilledTest = false;
-                }
-            }
-            else
-            {
-                startTest = true;
-                if (!myUIController.ongoingTest && currentTargetPos != 2 && currentTargetPos < 4)
-                {
-                    myUIController.showObjectives();
-                    myUIController.ongoingTest = true;
-                }
-            }*/
         }
 
         if (playerTransform.position == WayPoints[WayPoints.Count-1].position)
         {
             experienceDone = true;
             bikeMovement = 0.0f;
-            Time.timeScale = 0.0f;
+            //Time.timeScale = 0.0f;
+            playing.SetActive(false);
             FinalUI.SetActive(true);
         }
     }
@@ -279,15 +261,16 @@ public class MovementControllerScript : MonoBehaviour
     {
         startTest = false;
         fulfilledTest = true;      
-        //myUIController.ongoingTest = false;
     }
 
     public void bikeContinue()
     {
         bikeMovement = 1.0f;
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        playing.SetActive(true);
 
-        if(playerTransform.position == WayPoints[16].position)
+
+        if (playerTransform.position == WayPoints[16].position)
         {
             Invoke(nameof(resetCarsSpeed), 4.0f);
         }
@@ -315,7 +298,8 @@ public class MovementControllerScript : MonoBehaviour
 
     public void timeContinue()
     {
-		Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        //playing.SetActive(true);
 
         if(playerTransform.position == WayPoints[6].position || playerTransform.position == WayPoints[16].position || playerTransform.position == WayPoints[20].position)
         {
@@ -326,7 +310,8 @@ public class MovementControllerScript : MonoBehaviour
 
     public void timeContinueWarning()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        playing.SetActive(true);
         Invoke(nameof(callWarning), 3.0f);
     }
 
