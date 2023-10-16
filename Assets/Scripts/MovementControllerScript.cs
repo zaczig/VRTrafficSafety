@@ -310,7 +310,7 @@ public class MovementControllerScript : MonoBehaviour
 
     public void timeContinueWarning()
     {
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         playing.SetActive(true);
         Invoke(nameof(callWarning), 3.0f);
     }

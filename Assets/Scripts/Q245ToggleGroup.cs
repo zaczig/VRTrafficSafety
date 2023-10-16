@@ -13,6 +13,8 @@ public class Q245ToggleGroup : MonoBehaviour
     public AudioSource source;
     public AudioClip correct;
     public AudioClip wrong;
+    public GameObject playing;
+
 
     public bool isQuiz4 = false;
 
@@ -53,10 +55,10 @@ public class Q245ToggleGroup : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f;
-            
+            //Time.timeScale = 1f;
+            playing.SetActive(true);
         }
-        
+
         Invoke(nameof(changeCarLights), 0.1f);
 
     }

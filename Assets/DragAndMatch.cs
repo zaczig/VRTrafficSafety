@@ -9,7 +9,8 @@ public class DragAndMatch : MonoBehaviour
     public GameObject Q3;
     public GameObject Q3re;
     private TestControllerManager myTestManager;
-
+    public Material red;
+    public Material green;
 
     public AudioClip correct;
     public AudioClip wrong;
@@ -48,13 +49,16 @@ public class DragAndMatch : MonoBehaviour
             source.clip = correct;
             source.Play();
             A1C = true;
+            A1.GetComponent<MeshRenderer>().material = green;
         }
         else
         {
             A1.transform.localPosition = Pos1l;
             source.clip = wrong;
             source.Play();
-           // A1C = false;
+            A1.GetComponent<MeshRenderer>().material = red;
+
+            // A1C = false;
 
         }
     }
@@ -70,12 +74,16 @@ public class DragAndMatch : MonoBehaviour
             source.clip = correct;
             source.Play();
             A2C = true;
+            A2.GetComponent<MeshRenderer>().material = green;
+
         }
         else
         {
             A2.transform.localPosition = Pos2l;
             source.clip = wrong;
             source.Play();
+            A2.GetComponent<MeshRenderer>().material = red;
+
             //A2C = false;
         }
     }
@@ -91,6 +99,8 @@ public class DragAndMatch : MonoBehaviour
             source.clip = correct;
             source.Play();
             A3C= true;
+            A3.GetComponent<MeshRenderer>().material = green;
+
         }
         else
         {
@@ -98,6 +108,8 @@ public class DragAndMatch : MonoBehaviour
             source.clip = wrong;
             source.Play();
             //A3C = false;
+            A3.GetComponent<MeshRenderer>().material = red;
+
         }
     }
     public void SnaptoAns4()
@@ -112,6 +124,8 @@ public class DragAndMatch : MonoBehaviour
             source.clip = correct;
             source.Play();
             A4C = true;
+            A4.GetComponent<MeshRenderer>().material = green;
+
         }
         else
         {
@@ -119,6 +133,8 @@ public class DragAndMatch : MonoBehaviour
             source.clip = wrong;
             source.Play();
             //A4C = false;
+            A4.GetComponent<MeshRenderer>().material = red;
+
         }
     }
 
@@ -134,6 +150,9 @@ public class DragAndMatch : MonoBehaviour
             source.clip = correct;
             source.Play();
             A5C = true;
+            A5.GetComponent<MeshRenderer>().material = green;
+
+
         }
         else
         {
@@ -141,12 +160,18 @@ public class DragAndMatch : MonoBehaviour
             source.clip = wrong;
             source.Play();
             //A5C = false;
+            A5.GetComponent<MeshRenderer>().material = red;
+
         }
     }
 
     public void Quiz3isCorrect()
     {
-        if (A1C && A2C && A3C && A4C && A5C)
+        if (A1.transform.position == B1.transform.position &&
+           A2.transform.position == B2.transform.position &&
+           A3.transform.position == B3.transform.position &&
+           A4.transform.position == B4.transform.position &&
+           A5.transform.position == B5.transform.position)
         {
             Q3.SetActive(false);
         }
