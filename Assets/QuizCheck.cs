@@ -16,21 +16,20 @@ public class QuizCheck : MonoBehaviour
     public GameObject B5;  // Reference to the drop target B1.
 
     public GameObject Quiz;
+    public Material green;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void Quiz3isCorrect()
     {
-        if (A1.transform.position == B1.transform.position &&
-           A2.transform.position == B2.transform.position &&
-           A3.transform.position == B3.transform.position &&
-           A4.transform.position == B4.transform.position &&
-           A5.transform.position == B5.transform.position)
+        print("Check");
+        print(A1.GetComponent<Renderer>());
+        if (A1.GetComponent<Renderer>() == green &&
+           A2.GetComponent<Renderer>() == green &&
+           A3.GetComponent<Renderer>() == green &&
+           A4.GetComponent<Renderer>() == green &&
+           A5.GetComponent<Renderer>() == green)
         {
+            print("Complete");
             Quiz.SetActive(false);
         }
     }

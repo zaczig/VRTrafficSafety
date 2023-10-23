@@ -55,7 +55,7 @@ public class Q245ToggleGroup : MonoBehaviour
         }
         else
         {
-            //Time.timeScale = 1f;
+            Time.timeScale = 1f;
             playing.SetActive(true);
         }
 

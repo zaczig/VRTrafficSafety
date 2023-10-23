@@ -23,11 +23,11 @@ public class DragAndMatch : MonoBehaviour
     private void Start()
     {
         source = GetComponent<AudioSource>();
-        Pos1l = A1.transform.localPosition;  // Store the initial position of A1.
-        Pos2l = A2.transform.localPosition;  // Store the initial position of A1.
-        Pos3l = A3.transform.localPosition;  // Store the initial position of A1.
-        Pos4l = A4.transform.localPosition;  // Store the initial position of A1.
-        Pos5l = A5.transform.localPosition;  // Store the initial position of A1.
+        Pos1l = A1.transform.position;  // Store the initial position of A1.
+        Pos2l = A2.transform.position;  // Store the initial position of A1.
+        Pos3l = A3.transform.position;  // Store the initial position of A1.
+        Pos4l = A4.transform.position;  // Store the initial position of A1.
+        Pos5l = A5.transform.position;  // Store the initial position of A1.
 
         GameObject TestManager = GameObject.Find("TestController");
         myTestManager = TestManager.GetComponent<TestControllerManager>();
@@ -167,11 +167,11 @@ public class DragAndMatch : MonoBehaviour
 
     public void Quiz3isCorrect()
     {
-        if (A1.transform.position == B1.transform.position &&
-           A2.transform.position == B2.transform.position &&
-           A3.transform.position == B3.transform.position &&
-           A4.transform.position == B4.transform.position &&
-           A5.transform.position == B5.transform.position)
+        if (A1.GetComponent<MeshRenderer>().material == green &&
+           A2.GetComponent<MeshRenderer>().material == green &&
+           A3.GetComponent<MeshRenderer>().material == green &&
+           A4.GetComponent<MeshRenderer>().material == green &&
+           A5.GetComponent<MeshRenderer>().material == green)
         {
             Q3.SetActive(false);
         }
