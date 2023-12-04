@@ -24,10 +24,10 @@ public class DragAndMatch : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
         Pos1l = A1.transform.position;  // Store the initial position of A1.
-        Pos2l = A2.transform.position;  // Store the initial position of A1.
-        Pos3l = A3.transform.position;  // Store the initial position of A1.
-        Pos4l = A4.transform.position;  // Store the initial position of A1.
-        Pos5l = A5.transform.position;  // Store the initial position of A1.
+        Pos2l = A2.transform.position;  // Store the initial localPosition of A1.
+        Pos3l = A3.transform.position;  // Store the initial localPosition of A1.
+        Pos4l = A4.transform.position;  // Store the initial localPosition of A1.
+        Pos5l = A5.transform.position;  // Store the initial localPosition of A1.
 
         GameObject TestManager = GameObject.Find("TestController");
         myTestManager = TestManager.GetComponent<TestControllerManager>();

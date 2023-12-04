@@ -137,7 +137,7 @@ public class ButtonManager : MonoBehaviour
 		welcomeElements.SetActive(false);
 		//Time.timeScale = 1f;
 		playing.SetActive(true);
-		myMovementController.bikeMovement = 1f;
+		myMovementController.bikeMovement = 3f;
 		if (first_time)
 		{
 			myWarningController.playLeftWarning();
